@@ -38,6 +38,7 @@ func main() {
 			return
 		default:
 			input, err := reader.ReadString('\n')
+
 			if err != nil {
 				log.Println("error input", err)
 				continue
@@ -45,6 +46,7 @@ func main() {
 			if input == "" {
 				continue
 			}
+			input = input[:len(input)-1]
 			log.Println(input)
 			err = util.Publish(os.Stdout, ctx, util.PopicID, client, input)
 			if err != nil {
